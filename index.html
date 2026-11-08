@@ -5,7 +5,7 @@
   <title>AIプロンプトチェッカー (AI Prompt Checker)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Analytics 4 (GA4) -->
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP8SRTJMH4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,15 +16,14 @@
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans p-3 sm:p-6 md:p-8">
 
-  <!-- Header -->
+  
   <header class="max-w-4xl w-full mx-auto mb-3 sm:mb-5 pb-3 border-b border-slate-800">
     <div class="flex items-start justify-between gap-2">
-      <!-- Title & Subtitle -->
+      
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2">
           <span class="text-xl sm:text-2xl">🔍</span>
-          <h1 id="tMainTitle" class="text-lg sm:text-2xl font-bold tracking-tight text-white whitespace-nowrap">AIプロンプトチェッカー</h1>
-          <span class="text-[11px] font-mono text-indigo-400 bg-indigo-950/80 px-1.5 py-0.5 rounded border border-indigo-800/60">V1.0</span>
+          <h1 id="tMainTitle" class="text-lg sm:text-2xl font-bold tracking-tight text-white whitespace-nowrap">AIプロンプトチェッカー V1.0</h1>
         </div>
         <p id="tSubTitle" class="text-[11px] sm:text-xs text-slate-400 mt-1 leading-snug">
           <span>NovelAI / Stable Diffusion (WebUI・Forge・ComfyUI)</span><br class="block">
@@ -32,15 +31,15 @@
         </p>
       </div>
 
-      <!-- Actions: Language Toggle & Support Buttons (右上固定・コンパクト配置) -->
+      
       <div class="flex flex-col sm:flex-row items-end sm:items-center gap-1.5 shrink-0">
-        <!-- Language Switcher -->
+        
         <div class="inline-flex rounded-md bg-slate-800 p-0.5 border border-slate-700 text-[11px]">
           <button id="langJpBtn" onclick="switchLang('ja')" class="px-2 py-0.5 rounded font-medium transition bg-indigo-600 text-white">JP</button>
           <button id="langEnBtn" onclick="switchLang('en')" class="px-2 py-0.5 rounded font-medium transition text-slate-400 hover:text-slate-200">EN</button>
         </div>
 
-        <!-- Support Buttons -->
+        
         <div class="flex items-center gap-1.5">
           <a href="https://ofuse.me/4729099c" target="_blank" rel="noopener noreferrer"
              onclick="trackDonate('ofuse')"
@@ -60,19 +59,20 @@
     </div>
   </header>
 
-  <!-- Main Container -->
+  
   <main class="max-w-4xl w-full mx-auto flex-1 flex flex-col space-y-2.5">
 
-    <!-- Compatibility & Privacy Notice -->
-    <div class="text-[11px] bg-slate-800/50 border border-slate-700/50 rounded-lg px-3 py-2 flex items-start sm:items-center gap-2 text-slate-300 leading-snug">
-      <span class="text-emerald-400 shrink-0 mt-0.5 sm:mt-0">🛡️</span>
+    
+    <div class="text-[11px] bg-slate-800/50 border border-slate-700/50 rounded-lg px-3 py-2 flex items-start gap-2 text-slate-300 leading-snug">
+      <span class="text-emerald-400 shrink-0 mt-0.5">🛡️</span>
       <span id="tNotice">
-        <strong class="text-indigo-300">完全ローカル解析：</strong>
-        NovelAI・SDに加え、Fooocus / InvokeAI / クリスタ / Photoshop等のメタデータ付きPNGもすべて抽出可能です（外部送信ゼロ）。
+        <strong class="text-emerald-400">【完全ローカル解析】</strong>
+        画像・プロンプト等の全データは端末内でのみ処理され、<span class="text-white font-semibold">外部サーバーへ送信されることは一切ありません</span>。<br class="hidden sm:inline">
+        NovelAI・SDに加え、Fooocus / InvokeAI / クリスタ / Photoshop等のメタデータ付きPNGもすべて抽出可能。
       </span>
     </div>
 
-    <!-- Drop Zone / File Input (コンパクト化：高さを大幅圧縮) -->
+    
     <label id="dropZone" class="group border border-dashed border-slate-700 hover:border-indigo-500/70 bg-slate-800/30 hover:bg-slate-800/70 transition-all rounded-xl p-3 sm:p-4 text-center cursor-pointer flex items-center justify-center gap-3">
       <div class="w-8 h-8 rounded-full bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-base shrink-0">
         📥
@@ -88,7 +88,7 @@
       <input type="file" id="f" accept="image/png" class="hidden">
     </label>
 
-    <!-- Controls & Status Bar -->
+    
     <div class="flex items-center justify-between gap-2 pt-0.5">
       <div id="fileInfo" class="text-[11px] font-mono text-indigo-300 truncate max-w-[65%] sm:max-w-[75%]">
         ファイル未選択
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <!-- Output Textarea (画面いっぱいに広げる) -->
+    
     <div class="flex-1 min-h-[460px] sm:min-h-[520px] flex flex-col">
       <textarea id="out" readonly spellcheck="false" placeholder="ここに解析されたメタデータ（JSONフォーマット）が表示されます..." class="w-full flex-1 min-h-[460px] rounded-xl bg-slate-950 border border-slate-800 p-3 font-mono text-xs text-sky-400 focus:outline-none focus:border-indigo-500/50 resize-y leading-relaxed"></textarea>
     </div>
@@ -114,255 +114,7 @@
     NAI Matrix Utilities &copy; 2026
   </footer>
 
-  <!-- 暗号化.html と互換性を保つための id="appCoreScript" -->
-  <script id="appCoreScript">
-    const fileInput = document.getElementById('f');
-    const dropZone = document.getElementById('dropZone');
-    const outputArea = document.getElementById('out');
-    const fileInfo = document.getElementById('fileInfo');
-    const copyBtn = document.getElementById('copyBtn');
-    const copyBtnText = document.getElementById('copyBtnText');
-    const clearBtn = document.getElementById('clearBtn');
-    const langJpBtn = document.getElementById('langJpBtn');
-    const langEnBtn = document.getElementById('langEnBtn');
-
-    // 多言語辞書定義
-    const I18N = {
-      ja: {
-        mainTitle: 'AIプロンプトチェッカー',
-        subTitle: '<span>NovelAI / Stable Diffusion (WebUI・Forge・ComfyUI)</span><br class="block"><span>PNGメタデータ直接解析・RAW抽出ツール</span>',
-        ofuseBtn: 'OFUSE',
-        notice: '<strong class="text-indigo-300">完全ローカル解析：</strong> NovelAI・SDに加え、Fooocus / InvokeAI / クリスタ / Photoshop等のメタデータ付きPNGもすべて抽出可能です（外部送信ゼロ）。',
-        dropTitle: 'PNG画像を選択 / ドロップ',
-        dropSub1: 'NovelAI / Stable Diffusion (WebUI・Forge・ComfyUI)',
-        noFile: 'ファイル未選択',
-        copyJson: 'コピー',
-        copied: '完了！',
-        clear: 'クリア',
-        placeholder: 'ここに解析されたメタデータ（JSONフォーマット）が表示されます...',
-        alertPng: 'PNG画像ファイルを選択してください。',
-        analyzing: '解析中',
-        detectedLabel: '判定',
-        chunkCountLabel: 'チャンク',
-        errorPrefix: '解析エラー: '
-      },
-      en: {
-        mainTitle: 'AI Prompt Checker',
-        subTitle: '<span>NovelAI / Stable Diffusion (WebUI・Forge・ComfyUI)</span><br class="block"><span>Direct PNG Metadata & RAW Inspector</span>',
-        ofuseBtn: 'OFUSE',
-        notice: '<strong class="text-indigo-300">100% Local & Universal:</strong> Fully extracts metadata from NovelAI, SD, Fooocus, InvokeAI, CLIP STUDIO, Photoshop, and more. Zero external uploads.',
-        dropTitle: 'Select or Drop PNG',
-        dropSub1: 'NovelAI / Stable Diffusion (WebUI / Forge / ComfyUI)',
-        noFile: 'No file selected',
-        copyJson: 'Copy',
-        copied: 'Copied!',
-        clear: 'Clear',
-        placeholder: 'Parsed metadata (JSON) will be displayed here...',
-        alertPng: 'Please select a valid PNG image file.',
-        analyzing: 'Analyzing',
-        detectedLabel: 'Detected',
-        chunkCountLabel: 'Chunks',
-        errorPrefix: 'Error: '
-      }
-    };
-
-    let currentLang = 'ja';
-    let lastLoadedFileInfo = null;
-
-    // 言語切り替え処理
-    function switchLang(lang) {
-      currentLang = lang;
-      const dict = I18N[lang];
-
-      document.getElementById('tMainTitle').textContent = dict.mainTitle;
-      document.getElementById('tSubTitle').innerHTML = dict.subTitle;
-      document.getElementById('tOfuseBtn').textContent = dict.ofuseBtn;
-      document.getElementById('tNotice').innerHTML = dict.notice;
-      document.getElementById('tDropTitle').textContent = dict.dropTitle;
-      document.getElementById('tDropSub1').textContent = dict.dropSub1;
-      copyBtnText.textContent = dict.copyJson;
-      clearBtn.textContent = dict.clear;
-      outputArea.placeholder = dict.placeholder;
-
-      if (lang === 'ja') {
-        langJpBtn.className = 'px-2 py-0.5 rounded font-medium transition bg-indigo-600 text-white';
-        langEnBtn.className = 'px-2 py-0.5 rounded font-medium transition text-slate-400 hover:text-slate-200';
-      } else {
-        langEnBtn.className = 'px-2 py-0.5 rounded font-medium transition bg-indigo-600 text-white';
-        langJpBtn.className = 'px-2 py-0.5 rounded font-medium transition text-slate-400 hover:text-slate-200';
-      }
-
-      if (lastLoadedFileInfo) {
-        fileInfo.textContent = `✅ ${lastLoadedFileInfo.name} (${lastLoadedFileInfo.sizeKb}KB) - ${dict.detectedLabel}:${lastLoadedFileInfo.detectedType}`;
-      } else {
-        fileInfo.textContent = dict.noFile;
-      }
-
-      if (typeof gtag === 'function') {
-        gtag('event', 'switch_language', { language: lang });
-      }
-    }
-
-    // 支援リンククリック計測
-    function trackDonate(platform) {
-      if (typeof gtag === 'function') {
-        gtag('event', 'click_donate', {
-          platform: platform,
-          source: 'prompt_checker'
-        });
-      }
-    }
-
-    // ドラッグ＆ドロップ対応
-    ['dragenter', 'dragover'].forEach(eventName => {
-      dropZone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dropZone.classList.add('border-indigo-500', 'bg-slate-800/80');
-      });
-    });
-
-    ['dragleave', 'drop'].forEach(eventName => {
-      dropZone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dropZone.classList.remove('border-indigo-500', 'bg-slate-800/80');
-      });
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      const dt = e.dataTransfer;
-      const files = dt.files;
-      if (files && files.length > 0) {
-        handleFile(files[0]);
-      }
-    });
-
-    fileInput.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) handleFile(file);
-    });
-
-    // コピー機能
-    copyBtn.addEventListener('click', async () => {
-      if (!outputArea.value) return;
-      const dict = I18N[currentLang];
-      try {
-        await navigator.clipboard.writeText(outputArea.value);
-        copyBtnText.textContent = dict.copied;
-        setTimeout(() => { copyBtnText.textContent = dict.copyJson; }, 2000);
-
-        if (typeof gtag === 'function') {
-          gtag('event', 'copy_metadata', { source: 'prompt_checker' });
-        }
-      } catch (err) {
-        alert(currentLang === 'ja' ? 'コピーに失敗しました' : 'Failed to copy');
-      }
-    });
-
-    // クリア機能
-    clearBtn.addEventListener('click', () => {
-      const dict = I18N[currentLang];
-      outputArea.value = '';
-      lastLoadedFileInfo = null;
-      fileInfo.textContent = dict.noFile;
-      fileInput.value = '';
-      copyBtn.disabled = true;
-      clearBtn.disabled = true;
-    });
-
-    // ファイル解析処理
-    async function handleFile(file) {
-      const dict = I18N[currentLang];
-      if (!file.name.toLowerCase().endsWith('.png')) {
-        alert(dict.alertPng);
-        return;
-      }
-
-      fileInfo.textContent = `${dict.analyzing}: ${file.name}...`;
-
-      try {
-        const buf = await file.arrayBuffer();
-        const view = new DataView(buf);
-        let offset = 8;
-        const decoder = new TextDecoder('utf-8');
-        const results = {};
-        let chunkCount = 0;
-        let detectedType = 'Unknown';
-
-        while (offset < view.byteLength) {
-          if (offset + 8 > view.byteLength) break;
-          const len = view.getUint32(offset);
-          const type = String.fromCharCode(
-            view.getUint8(offset + 4), view.getUint8(offset + 5),
-            view.getUint8(offset + 6), view.getUint8(offset + 7)
-          );
-
-          if (type === 'tEXt' || type === 'iTXt') {
-            chunkCount++;
-            const chunkData = new Uint8Array(buf, offset + 8, len);
-            const raw = decoder.decode(chunkData);
-            const key = type + '_' + offset;
-            
-            try {
-              const nullIdx = raw.indexOf('\0');
-              if (nullIdx !== -1) {
-                const keyword = raw.substring(0, nullIdx);
-                const textPart = raw.substring(nullIdx + 1);
-
-                if (keyword === 'Comment') {
-                  detectedType = 'NovelAI';
-                } else if (keyword === 'parameters') {
-                  detectedType = 'Stable Diffusion';
-                } else if (keyword === 'prompt' || keyword === 'workflow') {
-                  detectedType = 'ComfyUI';
-                }
-
-                try {
-                  results[key] = {
-                    keyword: keyword,
-                    data: JSON.parse(textPart)
-                  };
-                } catch {
-                  results[key] = {
-                    keyword: keyword,
-                    text: textPart
-                  };
-                }
-              } else {
-                results[key] = raw;
-              }
-            } catch {
-              results[key] = raw;
-            }
-          }
-          offset += 12 + len;
-        }
-
-        outputArea.value = JSON.stringify(results, null, 2);
-        const sizeKb = (file.size / 1024).toFixed(1);
-        lastLoadedFileInfo = { name: file.name, sizeKb, detectedType, chunkCount };
-        fileInfo.textContent = `✅ ${file.name} (${sizeKb}KB) - ${dict.detectedLabel}:${detectedType}`;
-        copyBtn.disabled = false;
-        clearBtn.disabled = false;
-
-        if (typeof gtag === 'function') {
-          gtag('event', 'inspect_file', {
-            file_size_kb: Math.round(file.size / 1024),
-            chunk_count: chunkCount,
-            detected_type: detectedType
-          });
-        }
-      } catch (err) {
-        fileInfo.textContent = `❌ ${err.message}`;
-        outputArea.value = dict.errorPrefix + err.message;
-      }
-    }
-
-    const userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    if (userLang.startsWith('en')) {
-      switchLang('en');
-    }
-  </script>
+  
+  <script>const _0x51ff55=_0x37d3;(function(_0x4774e8,_0x4e168f){const _0x39be76=_0x37d3,_0x4c584d=_0x4774e8();while(!![]){try{const _0x17eba0=-parseInt(_0x39be76(0xc6))/0x1+-parseInt(_0x39be76(0xc2))/0x2*(-parseInt(_0x39be76(0xb1))/0x3)+parseInt(_0x39be76(0xa1))/0x4*(parseInt(_0x39be76(0xc3))/0x5)+parseInt(_0x39be76(0x81))/0x6*(-parseInt(_0x39be76(0x78))/0x7)+-parseInt(_0x39be76(0xb2))/0x8*(-parseInt(_0x39be76(0xb5))/0x9)+-parseInt(_0x39be76(0x8d))/0xa*(-parseInt(_0x39be76(0xbc))/0xb)+parseInt(_0x39be76(0xa6))/0xc*(-parseInt(_0x39be76(0x7d))/0xd);if(_0x17eba0===_0x4e168f)break;else _0x4c584d['push'](_0x4c584d['shift']());}catch(_0x382799){_0x4c584d['push'](_0x4c584d['shift']());}}}(_0x2eeb,0x8e3df));function _0x37d3(_0x2e0776,_0x41292c){_0x2e0776=_0x2e0776-0x66;const _0x2eeb93=_0x2eeb();let _0x37d3f7=_0x2eeb93[_0x2e0776];return _0x37d3f7;}const fileInput=document[_0x51ff55(0xc1)]('f'),dropZone=document[_0x51ff55(0xc1)](_0x51ff55(0xae)),outputArea=document[_0x51ff55(0xc1)]('out'),fileInfo=document[_0x51ff55(0xc1)](_0x51ff55(0xce)),copyBtn=document[_0x51ff55(0xc1)](_0x51ff55(0xab)),copyBtnText=document[_0x51ff55(0xc1)](_0x51ff55(0xbf)),clearBtn=document[_0x51ff55(0xc1)](_0x51ff55(0x8e)),langJpBtn=document[_0x51ff55(0xc1)](_0x51ff55(0x92)),langEnBtn=document[_0x51ff55(0xc1)](_0x51ff55(0x9a)),I18N={'ja':{'mainTitle':_0x51ff55(0x74),'subTitle':_0x51ff55(0xbb),'ofuseBtn':_0x51ff55(0x80),'notice':'<strong\x20class=\x22text-emerald-400\x22>【完全ローカル解析】</strong>\x20画像・プロンプト等の全データは端末内でのみ処理され、<span\x20class=\x22text-white\x20font-semibold\x22>外部サーバーへ送信されることは一切ありません</span>。<br\x20class=\x22hidden\x20sm:inline\x22>NovelAI・SDに加え、Fooocus\x20/\x20InvokeAI\x20/\x20クリスタ\x20/\x20Photoshop等のメタデータ付きPNGもすべて抽出可能。','dropTitle':_0x51ff55(0x8a),'dropSub1':_0x51ff55(0xb0),'noFile':'ファイル未選択','copyJson':_0x51ff55(0xaf),'copied':_0x51ff55(0xba),'clear':_0x51ff55(0x9f),'placeholder':'ここに解析されたメタデータ（JSONフォーマット）が表示されます...','alertPng':'PNG画像ファイルを選択してください。','analyzing':_0x51ff55(0xd0),'detectedLabel':'判定','chunkCountLabel':'チャンク','errorPrefix':_0x51ff55(0xc5)},'en':{'mainTitle':'AI\x20Prompt\x20Checker\x20V1.0','subTitle':_0x51ff55(0xca),'ofuseBtn':'OFUSE','notice':'<strong\x20class=\x22text-emerald-400\x22>【100%\x20Local\x20Processing・No\x20Uploads】</strong>\x20All\x20images\x20&\x20prompts\x20are\x20processed\x20strictly\x20inside\x20your\x20browser\x20and\x20<span\x20class=\x22text-white\x20font-semibold\x22>never\x20sent\x20to\x20any\x20external\x20server</span>.<br\x20class=\x22hidden\x20sm:inline\x22>Supports\x20NovelAI,\x20SD,\x20Fooocus,\x20InvokeAI,\x20CLIP\x20STUDIO,\x20Photoshop,\x20and\x20more.','dropTitle':_0x51ff55(0x72),'dropSub1':'NovelAI\x20/\x20Stable\x20Diffusion\x20(WebUI\x20/\x20Forge\x20/\x20ComfyUI)','noFile':_0x51ff55(0xb9),'copyJson':_0x51ff55(0xa9),'copied':'Copied!','clear':'Clear','placeholder':_0x51ff55(0x73),'alertPng':_0x51ff55(0x87),'analyzing':_0x51ff55(0xa7),'detectedLabel':_0x51ff55(0xa4),'chunkCountLabel':_0x51ff55(0xb4),'errorPrefix':_0x51ff55(0x90)}};let currentLang='ja',lastLoadedFileInfo=null;function _0x2eeb(){const _0x4b2f90=['1754654pPheiV','iTXt','decode','copyBtnText','copied','getElementById','106714lGJqJb','15ythCVx','remove','解析エラー:\x20','48337QuEcdE','value','tDropTitle','...','<span>NovelAI\x20/\x20Stable\x20Diffusion\x20(WebUI・Forge・ComfyUI)</span><br\x20class=\x22block\x22><span>Direct\x20PNG\x20Metadata\x20&\x20RAW\x20Inspector</span>','name','change','placeholder','fileInfo','stopPropagation','解析中','getUint8','NovelAI','writeText','classList','tMainTitle','px-2\x20py-0.5\x20rounded\x20font-medium\x20transition\x20bg-indigo-600\x20text-white','noFile','userLanguage','language','Comment','px-2\x20py-0.5\x20rounded\x20font-medium\x20transition\x20text-slate-400\x20hover:text-slate-200','disabled','endsWith','Select\x20or\x20Drop\x20PNG','Parsed\x20metadata\x20(JSON)\x20will\x20be\x20displayed\x20here...','AIプロンプトチェッカー\x20V1.0','tEXt','click','Stable\x20Diffusion','7MysRSg','mainTitle','event','dragenter','alertPng','734149YAiqan','ofuseBtn','tNotice','OFUSE','36522lfkfXj','stringify','prompt_checker','preventDefault','dragover','workflow','Please\x20select\x20a\x20valid\x20PNG\x20image\x20file.','detectedLabel','dropSub1','PNG画像を選択\x20/\x20ドロップ','innerHTML','parse','40KDFDeJ','clearBtn','bg-slate-800/80','Error:\x20','arrayBuffer','langJpBtn','Unknown','border-indigo-500','KB)\x20-\x20','byteLength','.png','substring','notice','langEnBtn','function','clipboard','message','drop','クリア','forEach','1464620LpBRuW','subTitle','size','Detected','toLowerCase','552bFjWCL','Analyzing','toFixed','Copy','textContent','copyBtn','className','utf-8','dropZone','コピー','NovelAI\x20/\x20Stable\x20Diffusion\x20(WebUI・Forge・ComfyUI)','27WRHqdV','248zysKyC','コピーに失敗しました','Chunks','295569oBcJeC','addEventListener','inspect_file','indexOf','No\x20file\x20selected','完了！','<span>NovelAI\x20/\x20Stable\x20Diffusion\x20(WebUI・Forge・ComfyUI)</span><br\x20class=\x22block\x22><span>PNGメタデータ直接解析・RAW抽出ツール</span>'];_0x2eeb=function(){return _0x4b2f90;};return _0x2eeb();}function switchLang(_0x328511){const _0xebf63f=_0x51ff55;currentLang=_0x328511;const _0x47149c=I18N[_0x328511];document[_0xebf63f(0xc1)](_0xebf63f(0x69))[_0xebf63f(0xaa)]=_0x47149c[_0xebf63f(0x79)],document[_0xebf63f(0xc1)]('tSubTitle')['innerHTML']=_0x47149c[_0xebf63f(0xa2)],document[_0xebf63f(0xc1)]('tOfuseBtn')['textContent']=_0x47149c[_0xebf63f(0x7e)],document['getElementById'](_0xebf63f(0x7f))[_0xebf63f(0x8b)]=_0x47149c[_0xebf63f(0x99)],document[_0xebf63f(0xc1)](_0xebf63f(0xc8))['textContent']=_0x47149c['dropTitle'],document[_0xebf63f(0xc1)]('tDropSub1')[_0xebf63f(0xaa)]=_0x47149c[_0xebf63f(0x89)],copyBtnText[_0xebf63f(0xaa)]=_0x47149c['copyJson'],clearBtn['textContent']=_0x47149c['clear'],outputArea['placeholder']=_0x47149c[_0xebf63f(0xcd)],_0x328511==='ja'?(langJpBtn[_0xebf63f(0xac)]=_0xebf63f(0x6a),langEnBtn['className']=_0xebf63f(0x6f)):(langEnBtn['className']=_0xebf63f(0x6a),langJpBtn[_0xebf63f(0xac)]='px-2\x20py-0.5\x20rounded\x20font-medium\x20transition\x20text-slate-400\x20hover:text-slate-200'),lastLoadedFileInfo?fileInfo[_0xebf63f(0xaa)]='✅\x20'+lastLoadedFileInfo[_0xebf63f(0xcb)]+'\x20('+lastLoadedFileInfo['sizeKb']+_0xebf63f(0x95)+_0x47149c[_0xebf63f(0x88)]+':'+lastLoadedFileInfo['detectedType']:fileInfo[_0xebf63f(0xaa)]=_0x47149c[_0xebf63f(0x6b)],typeof gtag===_0xebf63f(0x9b)&&gtag(_0xebf63f(0x7a),'switch_language',{'language':_0x328511});}function trackDonate(_0xa5a04d){const _0x547f2e=_0x51ff55;typeof gtag===_0x547f2e(0x9b)&&gtag(_0x547f2e(0x7a),'click_donate',{'platform':_0xa5a04d,'source':_0x547f2e(0x83)});}[_0x51ff55(0x7b),_0x51ff55(0x85)][_0x51ff55(0xa0)](_0x53f9fa=>{const _0x49a6cf=_0x51ff55;dropZone[_0x49a6cf(0xb6)](_0x53f9fa,_0x7515d4=>{const _0x5810b1=_0x49a6cf;_0x7515d4[_0x5810b1(0x84)](),_0x7515d4[_0x5810b1(0xcf)](),dropZone['classList']['add'](_0x5810b1(0x94),_0x5810b1(0x8f));});}),['dragleave',_0x51ff55(0x9e)]['forEach'](_0xa44ef8=>{const _0x1bbb1a=_0x51ff55;dropZone[_0x1bbb1a(0xb6)](_0xa44ef8,_0x4042cd=>{const _0x4ccb48=_0x1bbb1a;_0x4042cd['preventDefault'](),_0x4042cd[_0x4ccb48(0xcf)](),dropZone[_0x4ccb48(0x68)][_0x4ccb48(0xc4)](_0x4ccb48(0x94),_0x4ccb48(0x8f));});}),dropZone[_0x51ff55(0xb6)](_0x51ff55(0x9e),_0x3b2e17=>{const _0xdf4981=_0x3b2e17['dataTransfer'],_0x1bbf80=_0xdf4981['files'];_0x1bbf80&&_0x1bbf80['length']>0x0&&handleFile(_0x1bbf80[0x0]);}),fileInput[_0x51ff55(0xb6)](_0x51ff55(0xcc),_0x49b319=>{const _0x1698a3=_0x49b319['target']['files'][0x0];if(_0x1698a3)handleFile(_0x1698a3);}),copyBtn[_0x51ff55(0xb6)](_0x51ff55(0x76),async()=>{const _0x1c0507=_0x51ff55;if(!outputArea['value'])return;const _0x4e3d68=I18N[currentLang];try{await navigator[_0x1c0507(0x9c)][_0x1c0507(0x67)](outputArea['value']),copyBtnText[_0x1c0507(0xaa)]=_0x4e3d68[_0x1c0507(0xc0)],setTimeout(()=>{const _0xe70c22=_0x1c0507;copyBtnText[_0xe70c22(0xaa)]=_0x4e3d68['copyJson'];},0x7d0),typeof gtag===_0x1c0507(0x9b)&&gtag(_0x1c0507(0x7a),'copy_metadata',{'source':_0x1c0507(0x83)});}catch(_0x519485){alert(currentLang==='ja'?_0x1c0507(0xb3):'Failed\x20to\x20copy');}}),clearBtn[_0x51ff55(0xb6)](_0x51ff55(0x76),()=>{const _0x3be62a=_0x51ff55,_0x40b814=I18N[currentLang];outputArea[_0x3be62a(0xc7)]='',lastLoadedFileInfo=null,fileInfo[_0x3be62a(0xaa)]=_0x40b814[_0x3be62a(0x6b)],fileInput[_0x3be62a(0xc7)]='',copyBtn['disabled']=!![],clearBtn[_0x3be62a(0x70)]=!![];});async function handleFile(_0x20edfb){const _0x5160cd=_0x51ff55,_0xd5835c=I18N[currentLang];if(!_0x20edfb[_0x5160cd(0xcb)][_0x5160cd(0xa5)]()[_0x5160cd(0x71)](_0x5160cd(0x97))){alert(_0xd5835c[_0x5160cd(0x7c)]);return;}fileInfo[_0x5160cd(0xaa)]=_0xd5835c['analyzing']+':\x20'+_0x20edfb[_0x5160cd(0xcb)]+_0x5160cd(0xc9);try{const _0xfa3026=await _0x20edfb[_0x5160cd(0x91)](),_0x29c185=new DataView(_0xfa3026);let _0x1e06fb=0x8;const _0x25596b=new TextDecoder(_0x5160cd(0xad)),_0x48425e={};let _0xcd9235=0x0,_0x541044=_0x5160cd(0x93);while(_0x1e06fb<_0x29c185[_0x5160cd(0x96)]){if(_0x1e06fb+0x8>_0x29c185['byteLength'])break;const _0x4164a6=_0x29c185['getUint32'](_0x1e06fb),_0x2bcb1b=String['fromCharCode'](_0x29c185['getUint8'](_0x1e06fb+0x4),_0x29c185[_0x5160cd(0xd1)](_0x1e06fb+0x5),_0x29c185[_0x5160cd(0xd1)](_0x1e06fb+0x6),_0x29c185[_0x5160cd(0xd1)](_0x1e06fb+0x7));if(_0x2bcb1b===_0x5160cd(0x75)||_0x2bcb1b===_0x5160cd(0xbd)){_0xcd9235++;const _0x2f32a0=new Uint8Array(_0xfa3026,_0x1e06fb+0x8,_0x4164a6),_0x36852f=_0x25596b[_0x5160cd(0xbe)](_0x2f32a0),_0xba95d1=_0x2bcb1b+'_'+_0x1e06fb;try{const _0xbb3e66=_0x36852f[_0x5160cd(0xb8)]('\x00');if(_0xbb3e66!==-0x1){const _0xb3d73b=_0x36852f[_0x5160cd(0x98)](0x0,_0xbb3e66),_0xd035f7=_0x36852f['substring'](_0xbb3e66+0x1);if(_0xb3d73b===_0x5160cd(0x6e))_0x541044=_0x5160cd(0x66);else{if(_0xb3d73b==='parameters')_0x541044=_0x5160cd(0x77);else(_0xb3d73b==='prompt'||_0xb3d73b===_0x5160cd(0x86))&&(_0x541044='ComfyUI');}try{_0x48425e[_0xba95d1]={'keyword':_0xb3d73b,'data':JSON[_0x5160cd(0x8c)](_0xd035f7)};}catch{_0x48425e[_0xba95d1]={'keyword':_0xb3d73b,'text':_0xd035f7};}}else _0x48425e[_0xba95d1]=_0x36852f;}catch{_0x48425e[_0xba95d1]=_0x36852f;}}_0x1e06fb+=0xc+_0x4164a6;}outputArea[_0x5160cd(0xc7)]=JSON[_0x5160cd(0x82)](_0x48425e,null,0x2);const _0x2999c9=(_0x20edfb['size']/0x400)[_0x5160cd(0xa8)](0x1);lastLoadedFileInfo={'name':_0x20edfb[_0x5160cd(0xcb)],'sizeKb':_0x2999c9,'detectedType':_0x541044,'chunkCount':_0xcd9235},fileInfo[_0x5160cd(0xaa)]='✅\x20'+_0x20edfb[_0x5160cd(0xcb)]+'\x20('+_0x2999c9+_0x5160cd(0x95)+_0xd5835c[_0x5160cd(0x88)]+':'+_0x541044,copyBtn[_0x5160cd(0x70)]=![],clearBtn[_0x5160cd(0x70)]=![],typeof gtag===_0x5160cd(0x9b)&&gtag(_0x5160cd(0x7a),_0x5160cd(0xb7),{'file_size_kb':Math['round'](_0x20edfb[_0x5160cd(0xa3)]/0x400),'chunk_count':_0xcd9235,'detected_type':_0x541044});}catch(_0x1f598d){fileInfo['textContent']='❌\x20'+_0x1f598d[_0x5160cd(0x9d)],outputArea[_0x5160cd(0xc7)]=_0xd5835c['errorPrefix']+_0x1f598d[_0x5160cd(0x9d)];}}const userLang=(navigator[_0x51ff55(0x6d)]||navigator[_0x51ff55(0x6c)]||'')['toLowerCase']();userLang['startsWith']('en')&&switchLang('en');</script>
 </body>
 </html>
